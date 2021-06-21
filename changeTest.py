@@ -43,8 +43,10 @@ for root, dirs, files in os.walk(maindir):
         statbuf = os.stat(fpath)
         print(fpath + ", " + str(statbuf.st_mtime))
 
-ftpmod = (time.ctime(max(os.path.getmtime(root) for root,_,_ in os.walk(FTPlocal))))
-sitemod = (time.ctime(max(os.path.getmtime(root) for root,_,_ in os.walk(sitelocation))))
+ftpmod = (max(os.path.getmtime(root) for root,_,_ in os.walk(FTPlocal)))
+sitemod = (max(os.path.getmtime(root) for root,_,_ in os.walk(sitelocation)))
+print(ftpmod)
+print(sitemod)
 
 if sitemod < ftpmod:
     print("update")

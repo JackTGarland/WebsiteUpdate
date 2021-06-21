@@ -27,8 +27,8 @@ if file_size > 100000000: # Should be 100mb.
         f.close
 
 #Walks the path of both the ftp location and the site location and finds the most recent change date for any file or dir.
-ftpmod = (time.ctime(max(os.path.getmtime(root) for root,_,_ in os.walk(FTPlocal))))
-sitemod = (time.ctime(max(os.path.getmtime(root) for root,_,_ in os.walk(sitelocation))))
+ftpmod = (max(os.path.getmtime(root) for root,_,_ in os.walk(FTPlocal)))
+sitemod = (max(os.path.getmtime(root) for root,_,_ in os.walk(sitelocation)))
 
 if sitemod < ftpmod:
     try:
